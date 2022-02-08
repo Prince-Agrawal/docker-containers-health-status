@@ -1,0 +1,10 @@
+options:
+  docker: true
+pipelines:
+  default:
+    - step:
+        script:
+          - docker login -u $DOCKER_HUB_USER_NAME -p $DOCKER_HUB_PASSWORD
+          - export IMAGE_NAME=$DOCKER_HUB_REPOSITORY/docker-container-monitoring:latest
+          - docker build -t $IMAGE_NAME .
+          - docker push $IMAGE_NAME

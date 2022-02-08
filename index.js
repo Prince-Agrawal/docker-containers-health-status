@@ -19,9 +19,8 @@ const dockerContainerHealthStatus = async () => {
 
       const res = await sendNotification(containersStatus);
       if (res.data.ok === false) {
-        throw new Error("Enter Valid Slack Token");
+        throw new Error("Enter Valid Slack Token or Channel");
       }
-
       await sleep(Constants.THREAD_SLEEP_TIME);
 
     } catch (error) {

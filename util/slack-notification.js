@@ -15,11 +15,11 @@ const sendNotification = async (message) => {
 
 // formate message for slack
 const formateMessage = (message) => {
-  if (message.length === 0) return "All containers on are in *healthy state*\n" + `*HostName*: ${Constants.HOST_NAME} \n *IP*: ${Constants.HOST_IP}\n`;
+  if (message.length === 0) return "All containers are in *healthy state*\n" + `*HostName*: ${Constants.HOST_NAME} \n *IP*: ${Constants.HOST_IP}\n`;
   let fMessage = "*State* of Containers are: \n" + `*HostName*: ${Constants.HOST_NAME} \n *IP*: ${Constants.HOST_IP}\n`;
 
   for (let i = 0; i < message.length; i++) {
-    let tempStr = `>Id:*${message[i].Id}* \n> Name:${message[i].Name} \n> State:*${message[i].State}*`;
+    let tempStr = `>Id:*${message[i].Id}* \n> Name:${message[i].Names} \n> State:*${message[i].State}*`;
     fMessage = fMessage + `${tempStr}` + "\n>\n";
   }
   return fMessage;

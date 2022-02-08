@@ -16,15 +16,16 @@ const getDockerContainersStatusApi = async () => {
         const result = JSON.parse(stdout);
 
         const notRunningContainers = result.filter(res => {
+
           if (res.State !== Constants.RUNNING) {
             return {
-              Id: result[i].Id,
-              Name: result[i].Names,
-              State: result[i].State
+              Id: res.Id,
+              Name: res.Names,
+              State: res.State
             }
           }
         })
-
+        // console.log(notRunningContainers , "cccccccccccccccccccccccccccccccc");
         return resolve(notRunningContainers);
       } catch (error) {
         return reject(error);
